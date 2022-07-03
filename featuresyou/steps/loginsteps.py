@@ -19,11 +19,15 @@ def loginParameters(context, user, pwd):
 @when('Click on login button')
 def clickLogin(context):
     context.driver.find_element_by_id("btnLogin").click()
-    #i cant know if credentials are right
 
 @then('User must successfully login to the Dashboard page')
 def dashboard(context):
-    time.sleep(10)
-    text=context.driver.find_element_by_xpath("//h1[contains(text(), 'Dashboard')]").text
-    assert text=="Dashboard"
-    context.driver.close()
+    time.sleep(2)
+    try:
+        text=context.driver.find_element_by_xpath("//h1[contains(text(), 'Dashboard')]").text
+    except:
+        context.driver.close()
+        assert False, "Test Failed"
+    if text=="Dashboard":
+        context.driver.close()
+        assert True, "Test Passed"
