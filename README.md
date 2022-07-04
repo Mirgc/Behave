@@ -1,5 +1,12 @@
 # Behave
 
+Install:
+brew install python3
+python -m ensurepip --upgrade
+pip install behave
+pip install selenium
+python -m pip install requests
+
 Documentation:
 
 Behave documentation, very helpfull:
